@@ -26,7 +26,7 @@
 
 #include <string.h>
 
-#define DEFAULT_LOGO "argon/logos/default.bmp"
+#define DEFAULT_LOGO "RR/logos/default.bmp"
 
 /* Creates a menu entry */
 gui_menu_entry_t *gui_create_menu_entry(const char *text,

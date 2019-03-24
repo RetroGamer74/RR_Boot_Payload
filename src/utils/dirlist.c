@@ -93,6 +93,15 @@ char *dirlist(const char *directory, const char *pattern, bool includeHiddenFile
 	}
 
 	// compare copy_entries but sort dir_entries
+
+	char *sxos = "sxos";
+	char *reinx = "reinx";
+	char *atmos = "atmos";
+	char *hekate = "hekate";
+	char *lockpick = "lockpick";
+	char *memloader = "memloader";
+
+/*
 	for (i = 0; i < k - 1 ; i++)
 	{
 		for (j = i + 1; j < k; j++)
@@ -104,6 +113,38 @@ char *dirlist(const char *directory, const char *pattern, bool includeHiddenFile
 				memcpy(&dir_entries[j * 256], temp, strlen(temp) + 1);
 			}
 		}
+	}
+*/
+
+	for (i = 0; i < k - 1 ; i++)
+	{
+
+	    if(strstr(&copy_entries[i * 256],atmos) != NULL)
+	    {
+		memcpy(&dir_entries[0 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+	    }
+	    if(strstr(&copy_entries[i * 256],reinx) != NULL)
+	    {
+		memcpy(&dir_entries[1 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+	    }
+	    if(strstr(&copy_entries[i * 256],sxos) != NULL)
+	    {
+		memcpy(&dir_entries[2 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+	    }
+	    if(strstr(&copy_entries[i * 256],hekate) != NULL)
+	    {
+		memcpy(&dir_entries[3 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+	    }
+	    if(strstr(&copy_entries[i * 256],lockpick) != NULL)
+	    {
+		memcpy(&dir_entries[4 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+	    }
+	    if(strstr(&copy_entries[i * 256],memloader) != NULL)
+	    {
+		memcpy(&dir_entries[5 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+	    }
+
+
 	}
 
 	free(temp);

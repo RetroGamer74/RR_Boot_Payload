@@ -33,11 +33,12 @@
 
 #include "mem/heap.h"
 
-#define COLUMNS 4  
+#define COLUMNS 3  
 #define ROWS 2
-#define ELEM_SIZE 230
-#define MARGIN_TOP 130
-#define MARGIN_LEFT 45
+#define ELEM_SIZE 160
+#define MARGIN_TOP 190
+#define MARGIN_LEFT 100
+#define MARGIN_LEFT_2 90
 
 static int tool_reboot_rcm(void* param);
 static int tool_power_off(void* param);
@@ -70,8 +71,13 @@ static void generate_payloads_entries(char* payloads, gui_menu_t* menu)
 
         u32 row = i / COLUMNS;
         u32 col = i % COLUMNS;
-        u32 x = g_gfx_ctxt.width / COLUMNS * col + MARGIN_LEFT;
-        u32 y = g_gfx_ctxt.height / ROWS * row + MARGIN_TOP + (row == 0 ? 30 : -60);
+	u32 margin_left = MARGIN_LEFT;
+/*
+	if( row == 2 )
+		margin_left = MARGIN_LEFT_2;
+*/
+        u32 x = g_gfx_ctxt.width / COLUMNS * col + margin_left;
+        u32 y = g_gfx_ctxt.height / ROWS * row + MARGIN_TOP + (row == 0 ? 30 : -100);
 
         const char* payload_wo_bin = str_replace(&payloads[i * 256], ".bin", "");
         gui_menu_append_entry(menu, 

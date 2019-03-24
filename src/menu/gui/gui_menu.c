@@ -75,7 +75,7 @@ static void gui_menu_draw_background(gui_menu_t* menu)
     {
         g_gfx_con.scale = 4;
         gfx_con_setpos(&g_gfx_con, 480, 20);
-        gfx_printf(&g_gfx_con, "ArgonNX v%d.%d", MAJOR_VERSION, MINOR_VERSION);
+        ////gfx_printf(&g_gfx_con, "ArgonNX v%d.%d", MAJOR_VERSION, MINOR_VERSION);
     }
 }
 

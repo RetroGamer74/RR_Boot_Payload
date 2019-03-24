@@ -20,7 +20,6 @@
 
 #include "mem/heap.h"
 #include "gfx/gfx.h"
-#include <string.h>
 
 bool sd_mount()
 {
@@ -119,24 +118,14 @@ bool sd_file_exists(const char* filename)
     return false;
 }
 
-void flipVertically(unsigned char* pixels_buffer, const unsigned int width, const unsigned int height, const int bytes_per_pixel)
+void copyfile(const char* source, const char* target)
 {
-    const unsigned int rows = height / 2; // Iterate only half the buffer to get a full flip
-    const unsigned int row_stride = width * bytes_per_pixel;
-    unsigned char* temp_row = (unsigned char*)malloc(row_stride);
+        FIL fp;
+        if (f_open(&fp, source, FA_READ) != FR_OK)
+                return NULL;
 
-    int source_offset, target_offset;
+        u32 size = f_size(&fp);
+	f_close(&fp);
 
-    for (int rowIndex = 0; rowIndex < rows; rowIndex++)
-    {
-        source_offset = rowIndex * row_stride;
-        target_offset = (height - rowIndex - 1) * row_stride;
-
-        memcpy(temp_row, pixels_buffer + source_offset, row_stride);
-        memcpy(pixels_buffer + source_offset, pixels_buffer + target_offset, row_stride);
-        memcpy(pixels_buffer + target_offset, temp_row, row_stride);
-    }
-
-    free(temp_row);
-    temp_row = NULL;
+	sd_save_to_file(sd_file_read(source),size,target);
 }
