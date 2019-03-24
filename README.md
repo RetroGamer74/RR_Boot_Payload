@@ -1,4 +1,4 @@
-## What RR is?
+## What RetroReloaded (argon-nx) is?
 
 RR is RetroReloaded. It started as a Boot Manager, but today it manages several features and modifications thru Atmosphere and other CFW. So it tries to bring to the user, the best of many different Custom Firmwares, and make you can run any of them very easy.
 
