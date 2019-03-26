@@ -1,3 +1,16 @@
+## What RetroReloaded (argon-nx) is?
+
+RR is RetroReloaded. It started as a Boot Manager, but today it manages several features and modifications thru Atmosphere and other CFW. So it tries to bring to the user, the best of many different Custom Firmwares, and make you can run any of them very easy.
+
+So we started with the basic argon-nx project. And today it has been modified. Because of that, this fork.
+
+This is how looks now RetroReloaded Splash. 
+
+<img src="RR_146.png" alt="banner">
+
+Remeber this repo will only create the boot payload. For the rest CFW or BootManager, you have to [download the latest release of RetroReloaded](https://github.com/RetroGamer74/RR_RetroReloaded/releases).
+
+## What Argon is in the main repo?
 
 <img src="img/splash.jpg" alt="banner">
 
