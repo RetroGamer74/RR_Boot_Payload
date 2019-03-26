@@ -82,8 +82,8 @@ int launch_payload(char *path)
     {
 	copyfile("sept/ams/payload.bin","sept/payload.bin");
 	copyfile("sept/ams/sept-primary.bin","sept/sept-primary.bin");
-	copyfile("sept/ams/sept-secondary.bin","sept/secondary-primary.bin");
-	copyfile("sept/ams/sept-secondary.enc","sept/secondary-primary.enc");
+	copyfile("sept/ams/sept-secondary.bin","sept/sept-secondary.bin");
+	copyfile("sept/ams/sept-secondary.enc","sept/sept-secondary.enc");
 
     }
 
@@ -91,8 +91,8 @@ int launch_payload(char *path)
     {
 	copyfile("sept/reinx/payload.bin","sept/payload.bin");
 	copyfile("sept/reinx/sept-primary.bin","sept/sept-primary.bin");
-	copyfile("sept/reinx/sept-secondary.bin","sept/secondary-primary.bin");
-	copyfile("sept/reinx/sept-secondary.enc","sept/secondary-primary.enc");
+	copyfile("sept/reinx/sept-secondary.bin","sept/sept-secondary.bin");
+	copyfile("sept/reinx/sept-secondary.enc","sept/sept-secondary.enc");
     }
 
     FIL fp;

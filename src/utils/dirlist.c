@@ -19,6 +19,29 @@
 #include "libs/fatfs/ff.h"
 #include "mem/heap.h"
 #include "utils/types.h"
+//#include <stdio.h>
+#include "utils/fs_utils.h"
+
+char* itoa(int i, char b[]){
+    char const digit[] = "0123456789";
+    char* p = b;
+    if(i<0){
+        *p++ = '-';
+        i *= -1;
+    }
+    int shifter = i;
+    do{ //Move to where representation ends
+        ++p;
+        shifter = shifter/10;
+    }while(shifter);
+    *p = '\0';
+    do{ //Move back, inserting digits as u go
+        *--p = digit[i%10];
+        i = i/10;
+    }while(i);
+    return b;
+}
+
 
 char *dirlist(const char *directory, const char *pattern, bool includeHiddenFiles)
 {
@@ -101,6 +124,15 @@ char *dirlist(const char *directory, const char *pattern, bool includeHiddenFile
 	char *lockpick = "lockpick";
 	char *memloader = "memloader";
 
+	char *payload1 = "";
+	char *payload2 = "";
+	char *payload3 = "";
+	char *payload4 = "";
+	char *payload5 = "";
+	char *payload6 = "";
+
+	char buff[20];
+
 /*
 	for (i = 0; i < k - 1 ; i++)
 	{
@@ -115,38 +147,62 @@ char *dirlist(const char *directory, const char *pattern, bool includeHiddenFile
 		}
 	}
 */
+	char allpayloads[1300];
 
-	for (i = 0; i < k - 1 ; i++)
+	strcpy(allpayloads,"Payload Entries: ");
+	strcat(allpayloads,itoa(k,buff));
+
+	for (i = 0; i < k ; i++)
 	{
 
 	    if(strstr(&copy_entries[i * 256],atmos) != NULL)
 	    {
 		memcpy(&dir_entries[0 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+		payload1=&dir_entries[0 * 256];
+		strcat(allpayloads,"\nPAYLOAD1: ");
+		strcat(allpayloads,payload1);
 	    }
 	    if(strstr(&copy_entries[i * 256],reinx) != NULL)
 	    {
 		memcpy(&dir_entries[1 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+		payload2=&dir_entries[1 * 256];
+		strcat(allpayloads,"\nPAYLOAD2: ");
+		strcat(allpayloads,payload2);
 	    }
 	    if(strstr(&copy_entries[i * 256],sxos) != NULL)
 	    {
 		memcpy(&dir_entries[2 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+		payload3=&dir_entries[2 * 256];
+		strcat(allpayloads,"\nPAYLOAD3: ");
+		strcat(allpayloads,payload3);
 	    }
 	    if(strstr(&copy_entries[i * 256],hekate) != NULL)
 	    {
 		memcpy(&dir_entries[3 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+		payload4=&dir_entries[3 * 256];
+		strcat(allpayloads,"\nPAYLOAD4: ");
+		strcat(allpayloads,payload4);
 	    }
 	    if(strstr(&copy_entries[i * 256],lockpick) != NULL)
 	    {
 		memcpy(&dir_entries[4 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+		payload5=&dir_entries[4 * 256];
+		strcat(allpayloads,"\nPAYLOAD5: ");
+		strcat(allpayloads,payload5);
 	    }
 	    if(strstr(&copy_entries[i * 256],memloader) != NULL)
 	    {
 		memcpy(&dir_entries[5 * 256], &copy_entries[i * 256], strlen(&copy_entries[i * 256]) + 1);
+		payload6=&dir_entries[5 * 256];
+		strcat(allpayloads,"\nPAYLOAD6: ");
+		strcat(allpayloads,payload6);
 	    }
 
 
 	}
 
+
+	//sd_save_to_file(allpayloads, strlen(allpayloads), "logRRargon.txt");
 	free(temp);
 	free(copy_entries);
 
