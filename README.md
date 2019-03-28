@@ -1,5 +1,7 @@
 ## What RetroReloaded (argon-nx) is?
 
+This is the payload.bin of RetroReloaded. You can get the [latest release here.](https://github.com/RetroGamer74/RR_Boot_Payload-RetroReloaded-Switch-RR/releases)
+
 RR is RetroReloaded. It started as a Boot Manager, but today it manages several features and modifications thru Atmosphere and other CFW. So it tries to bring to the user, the best of many different Custom Firmwares, and make you can run any of them very easy.
 
 So we started with the basic argon-nx project. And today it has been modified. Because of that, this fork.
