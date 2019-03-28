@@ -20,6 +20,7 @@
 
 #include "utils/touch.h"
 #include "utils/btn.h"
+#include "utils/fs_utils.h"
 
 #include "gfx/gfx.h"
 
@@ -29,8 +30,8 @@
 
 #include <string.h>
 
-#define MINOR_VERSION 3
-#define MAJOR_VERSION 0
+#define MINOR_VERSION 12
+#define MAJOR_VERSION 1
 
 
 /* Render the menu */
@@ -73,9 +74,22 @@ static void gui_menu_draw_background(gui_menu_t* menu)
     /* Render title */
     if (!render_custom_title(menu->custom_gui)) 
     {
-        g_gfx_con.scale = 4;
-        gfx_con_setpos(&g_gfx_con, 480, 20);
-        ////gfx_printf(&g_gfx_con, "ArgonNX v%d.%d", MAJOR_VERSION, MINOR_VERSION);
+        g_gfx_con.scale = 2;
+        gfx_con_setpos(&g_gfx_con, 1050, 20);
+        gfx_printf(&g_gfx_con, "RR.Boot v%d.%d", MAJOR_VERSION, MINOR_VERSION);
+        gfx_con_setpos(&g_gfx_con, 1050, 40);
+        char *str;
+	void *buf;
+	char minorversion[3];
+	char mayorversion[2];
+
+	buf = sd_file_read("RR_version.txt");
+	str = buf;
+	minorversion[0] = str[2];
+	minorversion[1] = str[3];
+	mayorversion[0] = str[0];
+	mayorversion[1] = 0;
+        gfx_printf(&g_gfx_con, "RR.Core v%s.%s", mayorversion,minorversion);
     }
 }
 

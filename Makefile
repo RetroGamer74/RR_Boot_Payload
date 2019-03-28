@@ -5,8 +5,8 @@ endif
 include $(DEVKITARM)/base_rules
 
 TARGET 					:= payload
-BLVERSION_MAJOR := 0
-BLVERSION_MINOR := 3
+BLVERSION_MAJOR := 1
+BLVERSION_MINOR := 0
 BUILD 					:= build
 OUTPUT 					:= output
 SOURCEDIR 			:= src
