@@ -8,7 +8,7 @@ So we started with the basic argon-nx project. And today it has been modified. B
 
 This is how looks now RetroReloaded Splash. 
 
-<img src="RR_146.png" alt="banner">
+<img src="RR_151.jpg" alt="banner">
 
 Remeber this repo will only create the boot payload. For the rest CFW or BootManager, you have to [download the latest release of RetroReloaded](https://github.com/RetroGamer74/RR_RetroReloaded/releases).
 
