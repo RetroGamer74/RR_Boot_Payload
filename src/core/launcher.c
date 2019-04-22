@@ -95,6 +95,9 @@ int launch_payload(char *path)
 	copyfile("sept/reinx/sept-secondary.enc","sept/sept-secondary.enc");
     }
 
+    clean_templates();
+
+
     FIL fp;
     if (f_open(&fp, path, FA_READ))
     {
@@ -144,4 +147,34 @@ int launch_payload(char *path)
     (*ext_payload_ptr)();
 
 	return 1;
+}
+
+int clean_templates()
+{
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/common.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Entrance.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Set.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Flaunch.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Notification.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/fsmitm.flag");
+
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/common.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Entrance.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Set.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Flaunch.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Notification.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/fsmitm.flag");
+
+
+    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/common.szs");
+    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Entrance.szs");
+    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
+    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Set.szs");
+    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Flaunch.szs");
+    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Notification.szs");
+    f_unlink("/SXOS/titles/0100000000001000/fsmitm.flag");
+
+    return 0;
 }

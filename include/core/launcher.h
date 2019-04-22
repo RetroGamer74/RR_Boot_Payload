@@ -17,5 +17,6 @@
 #define _LAUNCHER_H_
 
 int launch_payload(char*);
+int clean_templates();
 
 #endif
