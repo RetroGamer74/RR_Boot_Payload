@@ -17,6 +17,7 @@
 #include "core/launcher.h"
 
 #include <string.h>
+#include <stdio.h>
 
 #include "libs/fatfs/ff.h"
 #include "utils/types.h"
@@ -57,6 +58,86 @@ void reloc_patcher(u32 payload_size)
 	}
 }
 
+void clean_template(char *cfw)
+{
+
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/common.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Entrance.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Set.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Flaunch.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Notification.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/fsmitm.flag");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/MyPage.szs");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs_metadata.bin");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt");
+    f_unlink("/atmosphere/titles/0100000000001000/romfs");
+    f_unlink("/atmosphere/titles/0100000000001000");
+
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/common.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Entrance.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Set.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Flaunch.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Notification.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/fsmitm.flag");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/MyPage.szs");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs_metadata.bin");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt");
+    f_unlink("/ReiNX/titles/0100000000001000/romfs");
+    f_unlink("/ReiNX/titles/0100000000001000");
+
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/common.szs");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/Entrance.szs");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/Set.szs");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/Flaunch.szs");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/Notification.szs");
+    f_unlink("/sxos/titles/0100000000001000/fsmitm.flag");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt/MyPage.szs");
+    f_unlink("/sxos/titles/0100000000001000/romfs_metadata.bin");
+    f_unlink("/sxos/titles/0100000000001000/romfs/lyt");
+    f_unlink("/sxos/titles/0100000000001000/romfs");
+    f_unlink("/sxos/titles/0100000000001000");
+
+}
+
+
+void clean_reinx_files()
+{
+    f_unlink("/ReiNX/patches/es_patches/D2D2430244D162C9FAABE8C89A58C6E3962160F1.ips");
+    f_unlink("/ReiNX/patches/es_patches/F65FBA401BAC3CDDEA4917DE22E8B426B3A6C3AD.ips");
+    f_unlink("/ReiNX/patches/es_patches");
+    f_unlink("/ReiNX/sysmodules.dis/fs_mitm.kip");
+    f_unlink("/ReiNX/sysmodules.dis/ldn_mitm.kip");
+    f_unlink("/ReiNX/sysmodules.dis/pm.kip");
+    f_unlink("/ReiNX/sysmodules/fs_mitm.kip");
+    f_unlink("/ReiNX/sysmodules/ldn_mitm.kip");
+    f_unlink("/ReiNX/exefs_patches/Youtube/534E296FFB5F854D94A719F7727FDE2700000000000000000000000000000000.ips");
+    f_unlink("/ReiNX/exefs_patches/Youtube");
+    f_unlink("/ReiNX/exefs_patches");
+    f_unlink("/ReiNX/titles/010000000000000D/exefs.nsp");
+    f_unlink("/ReiNX/titles/010000000000000D");
+    f_unlink("/ReiNX/titles/0100000000000032/flags/boot2.flag");
+    f_unlink("/ReiNX/titles/0100000000000032/flags");
+    f_unlink("/ReiNX/titles/0100000000000032/exefs.nsp");
+    f_unlink("/ReiNX/titles/0100000000000032");
+    f_unlink("/ReiNX/titles/0100000000000036/exefs.nsp");
+}
+
+
+void clean_files()
+{
+    char *atm = "atmosphere";
+    char *rnx = "ReiNX";
+    char *sxos = "sxos";
+    clean_template(atm);
+    clean_template(rnx);
+    clean_template(sxos);
+    clean_reinx_files();
+}
+
+
 int launch_payload(char *path)
 {
 
@@ -95,7 +176,7 @@ int launch_payload(char *path)
 	copyfile("sept/reinx/sept-secondary.enc","sept/sept-secondary.enc");
     }
 
-    clean_templates();
+    clean_files();
 
 
     FIL fp;
@@ -149,32 +230,3 @@ int launch_payload(char *path)
 	return 1;
 }
 
-int clean_templates()
-{
-    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/common.szs");
-    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Entrance.szs");
-    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
-    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Set.szs");
-    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Flaunch.szs");
-    f_unlink("/atmosphere/titles/0100000000001000/romfs/lyt/Notification.szs");
-    f_unlink("/atmosphere/titles/0100000000001000/fsmitm.flag");
-
-    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/common.szs");
-    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Entrance.szs");
-    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
-    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Set.szs");
-    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Flaunch.szs");
-    f_unlink("/ReiNX/titles/0100000000001000/romfs/lyt/Notification.szs");
-    f_unlink("/ReiNX/titles/0100000000001000/fsmitm.flag");
-
-
-    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/common.szs");
-    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Entrance.szs");
-    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/ResidentMenu.szs");
-    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Set.szs");
-    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Flaunch.szs");
-    f_unlink("/SXOS/titles/0100000000001000/romfs/lyt/Notification.szs");
-    f_unlink("/SXOS/titles/0100000000001000/fsmitm.flag");
-
-    return 0;
-}
