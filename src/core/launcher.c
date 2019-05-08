@@ -131,9 +131,9 @@ void clean_files()
     char *atm = "atmosphere";
     char *rnx = "ReiNX";
     char *sxos = "sxos";
-    clean_template(atm);
-    clean_template(rnx);
-    clean_template(sxos);
+    //clean_template(atm);
+    //clean_template(rnx);
+    //clean_template(sxos);
     clean_reinx_files();
 }
 

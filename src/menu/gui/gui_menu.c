@@ -30,7 +30,7 @@
 
 #include <string.h>
 
-#define MINOR_VERSION 14
+#define MINOR_VERSION 15
 #define MAJOR_VERSION 1
 
 
