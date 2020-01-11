@@ -1,4 +1,4 @@
-#This repo is DEPRECATED!!
+# This repo is DEPRECATED!!
 
 ## What RetroReloaded (argon-nx) is?
 
