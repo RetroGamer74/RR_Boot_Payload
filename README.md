@@ -1,3 +1,5 @@
+#This repo is DEPRECATED!!
+
 ## What RetroReloaded (argon-nx) is?
 
 This is the payload.bin of RetroReloaded. You can get the [latest release here.](https://github.com/RetroGamer74/RR_Boot_Payload-RetroReloaded-Switch-RR/releases)
